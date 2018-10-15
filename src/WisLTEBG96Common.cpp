@@ -15,11 +15,28 @@ WisLTEBG96Common::WisLTEBG96Common(Stream &atserial, Stream &dserial):WisLTEBG96
 
 }
 
+void _BG96PowerCycle() {
+    digitalWrite(POWKEY_PIN, LOW);
+    delay(500);
+    digitalWrite(POWKEY_PIN, HIGH);
+    delay(500);
+    digitalWrite(POWKEY_PIN, LOW);
+}
+
+void _BG96Reset() {
+    digitalWrite(RESET_PIN, LOW);
+    delay(200);
+    digitalWrite(RESET_PIN, HIGH);
+    delay(500);
+    digitalWrite(RESET_PIN, LOW);
+}
+
 bool WisLTEBG96Common::InitModule()
 {
-#ifdef WISLTE_BOARD
     pinMode(POWKEY_PIN, OUTPUT);
+    pinMode(RESET_PIN, OUTPUT);
     delay(100);
+#ifdef WISLTE_BOARD
     digitalWrite(POWKEY_PIN, LOW);
     delay(200);
     digitalWrite(POWKEY_PIN, HIGH);
@@ -39,18 +56,22 @@ bool WisLTEBG96Common::InitModule()
     }
 #endif
 #ifdef WISCELLULAR_BOARD
-    pinMode(RESET_PIN, OUTPUT);
-    digitalWrite(RESET_PIN, LOW);
-    pinMode(POWKEY_PIN, OUTPUT);
-    delay(100);
-    digitalWrite(POWKEY_PIN, HIGH);
-    delay(200);
-    digitalWrite(POWKEY_PIN, LOW);
+    if (sendAndSearch("", RESPONSE_OK, 2)) {
+        // The module is alread started
+        _BG96PowerCycle();
+        delay(1000);
+    }
+
+    _BG96PowerCycle();
+    delay(500);
+    _BG96Reset();
+
     if(readResponseToBuffer(5)){
         if(searchStrBuffer(RESPONSE_READY)){
             return true;
         }
     }
+
     delay(1000);
     digitalWrite(POWKEY_PIN, HIGH);
     delay(2000);
