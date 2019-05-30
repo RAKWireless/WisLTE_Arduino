@@ -8,17 +8,17 @@
 WisLTEBG96Serial	KEYWORD1
 WisLTEBG96Common	KEYWORD1
 WisLTEBG96FILE	KEYWORD1
-WisLTEBG96TCPIP KEYWORD1
-WisLTEBG96SSL   KEYWORD1
-WisLTEBG96GNSS  KEYWORD1
-WisLTEBG96HTTP  KEYWORD1
-WisLTEBG96MQTT  KEYWORD1
+WisLTEBG96TCPIP	KEYWORD1
+WisLTEBG96SSL	KEYWORD1
+WisLTEBG96GNSS	KEYWORD1
+WisLTEBG96HTTP	KEYWORD1
+WisLTEBG96MQTT	KEYWORD1
 
 #######################################
 # Methods and Functions (KEYWORD2)
 #######################################
-InitAPN KEYWORD2
-InitSSL KEYWORD2
+InitAPN	KEYWORD2
+InitSSL	KEYWORD2
 
 #######################################
 # Instances (KEYWORD2)
@@ -41,13 +41,13 @@ GNSS_Constellation_t	LITERAL1
 Socket_Event_t	LITERAL1
 SSL_Version_t	LITERAL1
 SSL_Cipher_Suites_t	LITERAL1
-SSL_Socket_Event_t  LITERAL1
+SSL_Socket_Event_t	LITERAL1
 Open_File_Mode_t	LITERAL1
 Pointer_Mode_t	LITERAL1
-HTTP_Body_Data_Type_t   LITERAL1
-Mqtt_Version_t  LITERAL1
-Mqtt_Qos_t  LITERAL1
-Mqtt_Session_Type_t LITERAL1
-Mqtt_Network_Result_t   LITERAL1
-Mqtt_Client_Result_Status_t LITERAL1
-Mqtt_URC_Event_t    LITERAL1
+HTTP_Body_Data_Type_t	LITERAL1
+Mqtt_Version_t	LITERAL1
+Mqtt_Qos_t	LITERAL1
+Mqtt_Session_Type_t	LITERAL1
+Mqtt_Network_Result_t	LITERAL1
+Mqtt_Client_Result_Status_t	LITERAL1
+Mqtt_URC_Event_t	LITERAL1
